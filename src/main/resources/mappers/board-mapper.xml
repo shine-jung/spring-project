@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Board">
+	<insert id="insertBoard">
+		insert into jsm_food (name, description, kcal, category, photo)
+		values
+		(#{name} , #{description} , #{kcal}, #{category}, #{photo})
+	</insert>
+	<update id="updateBoard">
+		update jsm_food 
+		set name=#{name}, description=#{description}, kcal=#{kcal}, category=#{category}, photo=#{photo}
+		where id=#{id}
+	</update>
+	<delete id="deleteBoard">
+		delete from jsm_food where id=#{id}
+	</delete>
+	<select id="getBoard" resultType="board">
+		select * from jsm_food where id=#{id}
+	</select>
+	<select id="getBoardList" resultType="board">
+		select * from jsm_food order by id desc
+	</select>
+	<select id ="getBoardList_cat" resultType = "board">
+		select * from jsm_food where category = #{category} order by id desc
+	</select>
+</mapper>
